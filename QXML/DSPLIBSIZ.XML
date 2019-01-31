@@ -1893,143 +1893,143 @@
 000000000000srclen  =  "00112"
 000000000000srccssid=  "00273">
 000000000000<copysrc><![CDATA[
-000000000000      *=====================================================================*
-000000000000      *                                                                     *
-000000000000      *  Kurzdokumentation :                                                *
-000000000000      *                                                                     *
-000000000000      *  Bereich . . . : DSPLIBSIZ                                          *
-000000000000      *  Objekt  . . . : DSPLIBSIZR                                         *
-000000000000      *  Beschreibung  : Tool: DSPLIBSIZ  (Display Library Size)            *
-000000000000      *  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
-000000000000      *  Datum . . . . : xx.xx.xxxx                                         *
-000000000000      *                                                                     *
-000000000000      *=====================================================================*
-000000000000      *                                                                     *
-000000000000      *  This software is free software, you can redistribute it and/or     *
-000000000000      *  modify it under the terms of the GNU General Public License (GPL)  *
-000000000000      *  as published by the Free Software Foundation.                      *
-000000000000      *                                                                     *
-000000000000      *  See GNU General Public License for details.                        *
-000000000000      *          http://www.opensource.org                                  *
-000000000000      *          http://www.opensource.org/licenses/gpl-license.html        *
-000000000000      *                                                                     *
-000000000000      *=====================================================================*
-000000000000      *  History:                                                           *
-000000000000      *                                                                     *
-000000000000      *  Datum       Name          Änderung                                 *
-000000000000      *  ----------  ------------  ---------------------------------------  *
-000000000000      *                                                                     *
-000000000000      *=====================================================================*
-000000000000      * >>PRE-COMPILER<<                                                    *
-000000000000      *   >>CRTCMD<< CRTRPGMOD    MODULE(&LI/&OB) +                         *
-000000000000      *                           SRCFILE(&SL/&SF) SRCMBR(&SM);             *
-000000000000      *   >>IMPORTANT<<                                                     *
-000000000000      *     >>PARM<< TRUNCNBR(*NO);                                         *
-000000000000      *     >>PARM<< DBGVIEW(*LIST);                                        *
-000000000000      *   >>END-IMPORTANT<<                                                 *
-000000000000      *   >>EXECUTE<<                                                       *
-000000000000      *   >>CMD<<    CRTPGM       PGM(&LI/&OB) +                            *
-000000000000      *                           MODULE(&LI/&OB) +                         *
-000000000000      *                           ACTGRP(*NEW) +                            *
-000000000000      *                           DETAIL(*BASIC);                           *
-000000000000      * >>END-PRE-COMPILER<<                                                *
-000000000000      *=====================================================================*
+000000000000       //=====================================================================*
+000000000000       //                                                                     *
+000000000000       //  Kurzdokumentation :                                                *
+000000000000       //                                                                     *
+000000000000       //  Bereich . . . : DSPLIBSIZ                                          *
+000000000000       //  Objekt  . . . : DSPLIBSIZR                                         *
+000000000000       //  Beschreibung  : Tool: DSPLIBSIZ  (Display Library Size)            *
+000000000000       //  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
+000000000000       //  Datum . . . . : xx.xx.xxxx                                         *
+000000000000       //                                                                     *
+000000000000       //=====================================================================*
+000000000000       //                                                                     *
+000000000000       //  This software is free software, you can redistribute it and/or     *
+000000000000       //  modify it under the terms of the GNU General Public License (GPL)  *
+000000000000       //  as published by the Free Software Foundation.                      *
+000000000000       //                                                                     *
+000000000000       //  See GNU General Public License for details.                        *
+000000000000       //          http://www.opensource.org                                  *
+000000000000       //          http://www.opensource.org/licenses/gpl-license.html        *
+000000000000       //                                                                     *
+000000000000       //=====================================================================*
+000000000000       //  History:                                                           *
+000000000000       //                                                                     *
+000000000000       //  Datum       Name          Änderung                                 *
+000000000000       //  ----------  ------------  ---------------------------------------  *
+000000000000       //                                                                     *
+000000000000       //=====================================================================*
+000000000000       // >>PRE-COMPILER<<                                                    *
+000000000000       //   >>CRTCMD<< CRTRPGMOD    MODULE(&LI/&OB) +                         *
+000000000000       //                           SRCFILE(&SL/&SF) SRCMBR(&SM);             *
+000000000000       //   >>IMPORTANT<<                                                     *
+000000000000       //     >>PARM<< TRUNCNBR(*NO);                                         *
+000000000000       //     >>PARM<< DBGVIEW(*LIST);                                        *
+000000000000       //   >>END-IMPORTANT<<                                                 *
+000000000000       //   >>EXECUTE<<                                                       *
+000000000000       //   >>CMD<<    CRTPGM       PGM(&LI/&OB) +                            *
+000000000000       //                           MODULE(&LI/&OB) +                         *
+000000000000       //                           ACTGRP(*NEW) +                            *
+000000000000       //                           DETAIL(*BASIC);                           *
+000000000000       // >>END-PRE-COMPILER<<                                                *
+000000000000       //=====================================================================*
 000000000000     H DEBUG DECEDIT('0,') DATEDIT(*DMY.)
 000000000000      /COPY QDSPLIBSIZ,COPYRIGHT
-000000000000      *=====================================================================*
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Definitionen für QLIRLIBD API
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  ... Receiver Variable
+000000000000       //=====================================================================*
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Definitionen für QLIRLIBD API
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  ... Receiver Variable
 000000000000     D rcvVar          DS           512    qualified
-000000000000     D  bytRet                 1      4I 0 inz
-000000000000     D  bytAvl                 5      8I 0 inz
-000000000000     D  numRet                 9     12I 0 inz
-000000000000     D  numAvl                13     16I 0 inz
-000000000000      *
-000000000000      *  ... Attributes to retreive
-000000000000      *      ... Type of library
+000000000000     D bytRet                        10I 0 inz
+000000000000     D bytAvl                        10I 0 inz
+000000000000     D numRet                        10I 0 inz
+000000000000     D numAvl                        10I 0 inz
+000000000000
+000000000000       //  ... Attributes to retreive
+000000000000       //      ... Type of library
 000000000000     D cTYPE           C                   1
-000000000000      *      ... ASP
+000000000000       //      ... ASP
 000000000000     D cASP            C                   2
-000000000000      *      ... Create authority
+000000000000       //      ... Create authority
 000000000000     D cCRTAUTH        C                   3
-000000000000      *      ... Create object auditing
+000000000000       //      ... Create object auditing
 000000000000     D cCRTAUD         C                   4
-000000000000      *      ... Text description
+000000000000       //      ... Text description
 000000000000     D cTEXT           C                   5
-000000000000      *      ... Library size information
+000000000000       //      ... Library size information
 000000000000     D cSIZE           C                   6
-000000000000      *      ... Number of objects in library
+000000000000       //      ... Number of objects in library
 000000000000     D cNUMOBJ         C                   7
-000000000000      *
-000000000000      *  ... Attributes to retrieve (return value)
+000000000000
+000000000000       //  ... Attributes to retrieve (return value)
 000000000000     D attrToRtv       DS                  qualified
-000000000000     D  numAttr                1      4I 0 inz
-000000000000     D  attr1                  5      8I 0 inz
-000000000000     D  attr2                  9     12I 0 inz
-000000000000     D  attr3                 13     16I 0 inz
-000000000000     D  attr4                 17     20I 0 inz
-000000000000     D  attr5                 21     24I 0 inz
-000000000000     D  attr6                 25     28I 0 inz
-000000000000     D  attr7                 29     32I 0 inz
-000000000000      *
-000000000000      *  ... Data returned
+000000000000     D numAttr                       10I 0 inz
+000000000000     D attr1                         10I 0 inz
+000000000000     D attr2                         10I 0 inz
+000000000000     D attr3                         10I 0 inz
+000000000000     D attr4                         10I 0 inz
+000000000000     D attr5                         10I 0 inz
+000000000000     D attr6                         10I 0 inz
+000000000000     D attr7                         10I 0 inz
+000000000000
+000000000000       //  ... Data returned
 000000000000     D varLenRcd       DS                  qualified based(pVarLenRcd)
-000000000000     D  dtaLen                 1      4I 0
-000000000000     D  keyID                  5      8I 0
-000000000000     D  fldSize                9     12I 0
-000000000000      *
-000000000000      *  ... Library Size Information Format
+000000000000     D dtaLen                        10I 0
+000000000000     D keyID                         10I 0
+000000000000     D fldSize                       10I 0
+000000000000
+000000000000       //  ... Library Size Information Format
 000000000000     D libSize         DS                  qualified based(pLibSize)
-000000000000     D  size                   1      4I 0
-000000000000     D  mult                   5      8I 0
-000000000000     D  infStat                9      9A
-000000000000     D  res01                 10     12A
-000000000000      *
-000000000000      *  ... Library Text Information Format
+000000000000     D size                          10I 0
+000000000000     D mult                          10I 0
+000000000000     D infStat                        1A
+000000000000     D res01                          3A
+000000000000
+000000000000       //  ... Library Text Information Format
 000000000000     D libDesc         DS                  qualified based(pLibDesc)
-000000000000     D  text                   1     50A
+000000000000     D text                          50A
 000000000000     D
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Referenzfelder
-000000000000      * ----------------------------------------------------------------------
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Referenzfelder
+000000000000       // ----------------------------------------------------------------------
 000000000000     D bool_t          S               N   based(pDummy)
-000000000000      *
+000000000000
 000000000000      /COPY QDSPLIBSIZ,FDERRCODE
 000000000000      /COPY QDSPLIBSIZ,FDQOBJ
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Konstanten
-000000000000      * ----------------------------------------------------------------------
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Konstanten
+000000000000       // ----------------------------------------------------------------------
 000000000000     D cTRUE           C                   *on
 000000000000     D cFALSE          C                   *off
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Prototypen
-000000000000      * ----------------------------------------------------------------------
-000000000000      *
-000000000000      * Retrieve Library Description (QLIRLIBD) API
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Prototypen
+000000000000       // ----------------------------------------------------------------------
+000000000000
+000000000000       // Retrieve Library Description (QLIRLIBD) API
 000000000000     D QLIRLIBD        PR                  extpgm('QLIRLIBD')
 000000000000     D  o_rcvVar                  32767A          options(*varsize)
 000000000000     D  i_rcvVarLen                  10I 0 const
 000000000000     D  i_lib                        10A   const
 000000000000     D  i_attrToRtv               32767A   const  options(*varsize)
 000000000000     D  io_errCode                32767A          options(*varsize)
-000000000000      *
+000000000000
 000000000000     D f_newApiErrCode...
 000000000000     D                 PR                         likeds(errCode_t)
 000000000000     D  i_monMsg                       N   value
-000000000000      *
+000000000000
 000000000000     D f_isApiErr...
 000000000000     D                 PR              N
 000000000000     D  i_errCode                          value  likeds(errCode_t)
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Definitionen für QMHSNDPM API
-000000000000      * ----------------------------------------------------------------------
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Definitionen für QMHSNDPM API
+000000000000       // ----------------------------------------------------------------------
 000000000000     D QMHSNDPM        PR                  extpgm('QMHSNDPM')
 000000000000     D  i_msgID                       7A   const
 000000000000     D  i_qMsgF                      20A   const
@@ -2040,258 +2040,212 @@
 000000000000     D  i_callStkC                   10I 0 const
 000000000000     D  o_msgKey                      4A
 000000000000     D  io_errCode                32767A          options(*varsize)
-000000000000      *  optional parameter group 1
+000000000000       //  optional parameter group 1
 000000000000     D  i_lenCallStkE                10I 0 const  options(*nopass )
 000000000000     D  i_callStkEQ                  20A   const  options(*nopass )
 000000000000     D  i_dspMsgWait                 10I 0 const  options(*nopass )
-000000000000      *  optional parameter group 2
+000000000000       //  optional parameter group 2
 000000000000     D  i_callStkEDT                 10A   const  options(*nopass )
 000000000000     D  i_ccsid                      10I 0 const  options(*nopass )
-000000000000      *
+000000000000
 000000000000     D msgKey          S              4A   inz
-000000000000      *
-000000000000     D qMsgF           DS                  likeds(qObj_t) inz
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Definitionen für alle API
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  ... Error Code
-000000000000     D errCode         DS                  likeds(errCode_t) inz
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Nachrichten
-000000000000      * ----------------------------------------------------------------------
 000000000000     D totLibSize      S             20S 0 inz
 000000000000     D msgData         S             80A   inz
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  *ENTYR Felder
-000000000000      * ----------------------------------------------------------------------
+000000000000     D qMsgF           DS                  likeds(qObj_t) inz
+000000000000     D errCode         DS                  likeds(errCode_t) inz
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  *ENTYR Felder
+000000000000       // ----------------------------------------------------------------------
 000000000000     D DSPLIBSIZR...
 000000000000     D                 PR                         extpgm('DSPLIBSIZR')
 000000000000     D  i_lib                        10A   const
 000000000000     D  i_language                    3A   const
-000000000000      *
-000000000000      * ======================================================================
-000000000000      *  *ENTRY - Liste
-000000000000      * ======================================================================
-000000000000      *
+000000000000
+000000000000       // ======================================================================
+000000000000       //  Program entry point
+000000000000       // ======================================================================
+000000000000
 000000000000     D DSPLIBSIZR...
 000000000000     D                 PI
 000000000000     D  i_lib                        10A   const
 000000000000     D  i_language                    3A   const
-000000000000      *-------------------------------------------------------------------
-000000000000      *
-000000000000      *  Ermitteln der Bibliotheksattribute
-000000000000     C                   Exsr      getLibAttr
-000000000000      *
-000000000000      *  Verarbeiten der Informationen
-000000000000      *  ... setzen Offset für "Variable length records returned"
-000000000000     C                   Eval      pVarLenRcd = %addr(rcvVar) + 16              Startposition
-000000000000      *
-000000000000      *  ... durchlesen aller "Variable length records returned"
-000000000000     C     1             Do        rcvVar.numRet
-000000000000      *
-000000000000      *  ... starten Verarbeitung pro Satz
-000000000000     C                   Select
-000000000000      *      ... Bibliotheksgröße
-000000000000     C                   When      (varLenRcd.keyID = cSIZE)
-000000000000     C                   Exsr      getLibSize
-000000000000      *      ... Bibliotheksbeschreibung (Text)
-000000000000     C                   When      (varLenRcd.keyID = cTEXT)
-000000000000     C                   Exsr      getLibText
-000000000000     C                   Other
-000000000000     C                   Exsr      *PSSR
-000000000000     C                   Endsl
-000000000000      *
-000000000000      *  ... berechnen neuen Offset
-000000000000     C                   Eval      pVarLenRcd = pVarLenRcd + varLenRcd.dtaLen
-000000000000     C                   Enddo
-000000000000      *
-000000000000      *  Beenden Programm
-000000000000     C                   Eval      *INLR = *ON
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Ermitteln der Bibliotheksattribute
-000000000000      * ----------------------------------------------------------------------
-000000000000      *
-000000000000     C     getLibAttr    Begsr
-000000000000      *
-000000000000     C                   Clear                   rcvVar
-000000000000     C                   Clear                   attrToRtv                      | Attr. to rec
-000000000000     C                   Eval      attrToRtv.numAttr = 2
-000000000000     C                   Eval      attrToRtv.attr1 = cSIZE
-000000000000     C                   Eval      attrToRtv.attr2 = cTEXT
-000000000000     C                   Eval      errCode = f_newApiErrCode(cFALSE)
-000000000000     C                   Callp     QLIRLIBD(rcvVar        :
-000000000000     C                                      %size(rcvVar) :
-000000000000     C                                      i_lib         :
-000000000000     C                                      attrToRtv     :
-000000000000     C                                      errCode       )
-000000000000      *
-000000000000     C                   Endsr
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Anzeigen der Bibliotheksgröße
-000000000000      * ----------------------------------------------------------------------
-000000000000      *
-000000000000     C     getLibSize    Begsr
-000000000000      *
-000000000000      *  Ermitteln der Größe (Objekte in Bibliothek)
-000000000000     C                   Eval      pLibSize = pVarLenRcd + %size(varLenRcd)
-000000000000      *
-000000000000      *  Aufbereiten der Nachricht (Nicht alle Objekte berücksichtigt)
-000000000000     C                   If        (libSize.infStat = '0')
-000000000000      *
-000000000000     C                   Select
-000000000000     C                   When      (i_language = 'GER')
-000000000000     C                   Eval      msgData = 'Nicht alle Objekte von +
-000000000000     C                                        Bibliothek ' +
-000000000000     C                                          %trim(i_lib) +
-000000000000     C                                       ' berücksichtigt.'
-000000000000     C                   When      (i_language = 'ENG')
-000000000000     C                   Eval      msgData = 'Not all objects of +
-000000000000     C                                        library ' +
-000000000000     C                                          %trim(i_lib) +
-000000000000     C                                       ' included in total library size.'
-000000000000     C                   Other
-000000000000     C                   Eval      msgData = 'Unknown language identifier!'
-000000000000     C                   Endsl
-000000000000      *
-000000000000     C                   Eval      qMsgF.name = 'QCPFMSG'
-000000000000     C                   Eval      qMsgF.lib  = '*LIBL'
-000000000000      *
-000000000000     C                   Callp     QMHSNDPM('CPF9897'      :
-000000000000     C                                      qMsgF          :
-000000000000     C                                      msgData        :
-000000000000     C                                      %size(msgData) :
-000000000000     C                                      '*INFO'        :
-000000000000     C                                      '*CTLBDY'      :
-000000000000     C                                      1              :
-000000000000     C                                      msgKey         :
-000000000000     C                                      errCode        )
-000000000000      *
-000000000000     C                   Endif
-000000000000      *
-000000000000      *  Aufbereiten der Nachricht (Größe)
-000000000000     C                   Eval      totLibSize = libSize.size * libSize.mult
-000000000000      *
-000000000000     C                   Select
-000000000000     C                   When      (i_language = 'GER')
-000000000000     C                   Eval      msgData = 'Bibliothek: ' +
-000000000000     C                                          %trim(i_lib) +
-000000000000     C                                       ' - Größe: ' +
-000000000000     C                                          %trim(%editc(totLibSize: 'K')) +
-000000000000     C                                       ' Byte.'
-000000000000     C                   When      (i_language = 'ENG')
-000000000000     C                   Eval      msgData = 'Library: ' +
-000000000000     C                                          %trim(i_lib) +
-000000000000     C                                       ' - Size: ' +
-000000000000     C                                          %trim(%editc(totLibSize: 'K')) +
-000000000000     C                                       ' byte.'
-000000000000     C                   Other
-000000000000     C                   Eval      msgData = 'Unknown language identifier!'
-000000000000     C                   Endsl
-000000000000      *
-000000000000     C                   Eval      qMsgF.name = 'QCPFMSG'
-000000000000     C                   Eval      qMsgF.lib = '*LIBL'
-000000000000      *
-000000000000     C                   Callp     QMHSNDPM('CPF9897'      :
-000000000000     C                                      qMsgF          :
-000000000000     C                                      msgData        :
-000000000000     C                                      %size(msgData) :
-000000000000     C                                      '*INFO'        :
-000000000000     C                                      '*CTLBDY'      :
-000000000000     C                                      1              :
-000000000000     C                                      msgKey         :
-000000000000     C                                      errCode        )
-000000000000      *
-000000000000     C                   Endsr
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Anzeigen der Bibliotheksbeschreibung (Text)
-000000000000      * ----------------------------------------------------------------------
-000000000000      *
-000000000000     C     getLibText    Begsr
-000000000000      *
-000000000000      *  Ermitteln der Größe
-000000000000     C                   Eval      pLibDesc = pVarLenRcd + %size(varLenRcd)
-000000000000      *
-000000000000      *  Aufbereiten der Nachricht (Beschreibung)
-000000000000     C                   Eval      msgData = libDesc.text
-000000000000      *
-000000000000     C                   Eval      qMsgF.name = 'QCPFMSG'
-000000000000     C                   Eval      qMsgF.lib  = '*LIBL'
-000000000000      *
-000000000000     C                   Callp     QMHSNDPM('CPF9897'      :
-000000000000     C                                      qMsgF          :
-000000000000     C                                      msgData        :
-000000000000     C                                      %size(msgData) :
-000000000000     C                                      '*INFO'        :
-000000000000     C                                      '*CTLBDY'      :
-000000000000     C                                      1              :
-000000000000     C                                      msgKey         :
-000000000000     C                                      errCode        )
-000000000000      *
-000000000000     C                   Endsr
-000000000000      *
-000000000000      * ----------------------------------------------------------------------
-000000000000      *  Fehlerbehandlung
-000000000000      * ----------------------------------------------------------------------
-000000000000      *
-000000000000     C     *PSSR         Begsr
-000000000000      *
-000000000000      *
-000000000000     C                   Endsr     '*CANCL'
-000000000000      *
-000000000000      *==================================================================*
-000000000000      *  Create new API error code
-000000000000      *==================================================================*
-000000000000      *
+000000000000     D
+000000000000     D i               S             10i 0
+000000000000       //-------------------------------------------------------------------
+000000000000      /free
+000000000000
+000000000000       Exsr getLibAttr;
+000000000000
+000000000000       pVarLenRcd = %addr(rcvVar) + 16;
+000000000000
+000000000000       FOR i = 1 TO rcvVar.numRet;
+000000000000
+000000000000          Select;
+000000000000             //  ... Bibliotheksgröße
+000000000000          When (varLenRcd.keyID = cSIZE);
+000000000000             Exsr getLibSize;
+000000000000             //  ... Bibliotheksbeschreibung (Text)
+000000000000          When (varLenRcd.keyID = cTEXT);
+000000000000             Exsr getLibText;
+000000000000          Other;
+000000000000             Exsr *PSSR;
+000000000000          Endsl;
+000000000000
+000000000000          pVarLenRcd = pVarLenRcd + varLenRcd.dtaLen;
+000000000000       ENDFOR;
+000000000000
+000000000000       *INLR = *ON;
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Ermitteln der Bibliotheksattribute
+000000000000       // ----------------------------------------------------------------------
+000000000000       Begsr getLibAttr;
+000000000000
+000000000000          Clear rcvVar;
+000000000000          Clear attrToRtv;
+000000000000          attrToRtv.numAttr = 2;
+000000000000          attrToRtv.attr1 = cSIZE;
+000000000000          attrToRtv.attr2 = cTEXT;
+000000000000          errCode = f_newApiErrCode(cFALSE);
+000000000000          QLIRLIBD(rcvVar: %size(rcvVar): i_lib: attrToRtv: errCode);
+000000000000
+000000000000       Endsr;
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Anzeigen der Bibliotheksgröße
+000000000000       // ----------------------------------------------------------------------
+000000000000       Begsr getLibSize;
+000000000000
+000000000000          //  Ermitteln der Größe (Objekte in Bibliothek)
+000000000000          pLibSize = pVarLenRcd + %size(varLenRcd);
+000000000000
+000000000000          //  Aufbereiten der Nachricht (Nicht alle Objekte berücksichtigt)
+000000000000          If (libSize.infStat = '0');
+000000000000
+000000000000             Select;
+000000000000             When (i_language = 'GER');
+000000000000                msgData = 'Nicht alle Objekte von +
+000000000000                          Bibliothek ' +
+000000000000                            %trim(i_lib) +
+000000000000                         ' berücksichtigt.';
+000000000000             When (i_language = 'ENG');
+000000000000                msgData = 'Not all objects of +
+000000000000                          library ' +
+000000000000                            %trim(i_lib) +
+000000000000                         ' included in total library size.';
+000000000000             Other;
+000000000000                msgData = 'Unknown language identifier!';
+000000000000             Endsl;
+000000000000
+000000000000             qMsgF.name = 'QCPFMSG';
+000000000000             qMsgF.lib = '*LIBL';
+000000000000
+000000000000             QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
+000000000000                      : '*INFO': '*CTLBDY': 1: msgKey: errCode);
+000000000000
+000000000000          Endif;
+000000000000
+000000000000          //  Aufbereiten der Nachricht (Größe)
+000000000000          totLibSize = libSize.size * libSize.mult;
+000000000000
+000000000000          Select;
+000000000000          When (i_language = 'GER');
+000000000000             msgData = 'Bibliothek: ' +
+000000000000                         %trim(i_lib) +
+000000000000                      ' - Größe: ' +
+000000000000                         %trim(%editc(totLibSize: 'K')) +
+000000000000                      ' Byte.';
+000000000000          When (i_language = 'ENG');
+000000000000             msgData = 'Library: ' +
+000000000000                         %trim(i_lib) +
+000000000000                      ' - Size: ' +
+000000000000                         %trim(%editc(totLibSize: 'K')) +
+000000000000                      ' byte.';
+000000000000          Other;
+000000000000             msgData = 'Unknown language identifier!';
+000000000000          Endsl;
+000000000000
+000000000000          qMsgF.name = 'QCPFMSG';
+000000000000          qMsgF.lib = '*LIBL';
+000000000000
+000000000000          QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
+000000000000                   : '*INFO': '*CTLBDY': 1: msgKey: errCode);
+000000000000
+000000000000       Endsr;
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Anzeigen der Bibliotheksbeschreibung (Text)
+000000000000       // ----------------------------------------------------------------------
+000000000000       Begsr getLibText;
+000000000000
+000000000000          //  Aufbereiten der Nachricht (Beschreibung)
+000000000000          pLibDesc = pVarLenRcd + %size(varLenRcd);
+000000000000          msgData = libDesc.text;
+000000000000
+000000000000          qMsgF.name = 'QCPFMSG';
+000000000000          qMsgF.lib = '*LIBL';
+000000000000
+000000000000          QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
+000000000000                   : '*INFO': '*CTLBDY': 1: msgKey: errCode);
+000000000000
+000000000000       Endsr;
+000000000000
+000000000000       // ----------------------------------------------------------------------
+000000000000       //  Fehlerbehandlung
+000000000000       // ----------------------------------------------------------------------
+000000000000       Begsr *PSSR;
+000000000000       Endsr '*CANCL';
+000000000000
+000000000000      /end-free
+000000000000
+000000000000       //==================================================================*
+000000000000       //  Create new API error code
+000000000000       //==================================================================*
 000000000000     P f_newApiErrCode...
 000000000000     P                 B
 000000000000     D                 PI                         likeds(errCode_t)
 000000000000     D  i_monMsg                           value  like(bool_t)
-000000000000      *
-000000000000      *  Deklarieren Funktionswert
+000000000000
 000000000000     D errCode         DS                  likeds(errCode_t) inz
-000000000000      *-------------------------------------------------------------------
-000000000000      *
-000000000000     C                   Clear                   errCode
-000000000000      *
-000000000000     C                   If        (i_monMsg)
-000000000000     C                   Eval      errCode.bytPrv = %size(errCode)
-000000000000     C                   Else
-000000000000     C                   Eval      errCode.bytPrv = 0
-000000000000     C                   Endif
-000000000000      *
-000000000000     C                   Return    errCode
-000000000000      *
+000000000000       //-------------------------------------------------------------------
+000000000000      /free
+000000000000
+000000000000       Clear errCode;
+000000000000
+000000000000       If (i_monMsg);
+000000000000          errCode.bytPrv = %size(errCode);
+000000000000       Else;
+000000000000          errCode.bytPrv = 0;
+000000000000       Endif;
+000000000000
+000000000000       Return errCode;
+000000000000
+000000000000      /end-free
 000000000000     P                 E
-000000000000      *
-000000000000      *==================================================================*
-000000000000      *  Is API Error?
-000000000000      *==================================================================*
-000000000000      *
+000000000000
+000000000000       //==================================================================*
+000000000000       //  Is API Error?
+000000000000       //==================================================================*
 000000000000     P f_isApiErr...
 000000000000     P                 B
 000000000000     D                 PI                         like(bool_t)
 000000000000     D  i_errCode                          value  likeds(errCode_t)
-000000000000      *
-000000000000      *  Deklarieren Funktionswert
+000000000000
 000000000000     D o_isError       S                   like(bool_t) inz(cFALSE)
-000000000000      *-------------------------------------------------------------------
-000000000000      *
-000000000000     C                   If        (i_errCode.bytAvl = 0)
-000000000000     C                   Eval      o_isError = cFALSE
-000000000000     C                   Else
-000000000000     C                   Eval      o_isError = cTRUE
-000000000000     C                   Endif
-000000000000      *
-000000000000     C                   Return    o_isError
-000000000000      *
+000000000000       //-------------------------------------------------------------------
+000000000000      /free
+000000000000
+000000000000       If (i_errCode.bytAvl = 0);
+000000000000          o_isError = cFALSE;
+000000000000       Else;
+000000000000          o_isError = cTRUE;
+000000000000       Endif;
+000000000000
+000000000000       Return o_isError;
+000000000000
+000000000000      /end-free
 000000000000     P                 E
-000000000000      *
 000000000000]]>  </copysrc>
 000000000000</mbr>
 000000000000<sendmsg  sendmsgid="CPF9897" sendmsgtype = "*STATUS   "><![CDATA[
