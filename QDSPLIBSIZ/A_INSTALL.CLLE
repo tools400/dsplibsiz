@@ -1,0 +1,140 @@
+000100181219     /* =================================================================== */
+000200181219     /*                                                                     */
+000300181219     /*  Documentation:                                                     */
+000400181219     /*                                                                     */
+000500181219     /*  Utility . . . : CHGOBJDA                                           */
+000600181219     /*  Object  . . . : A_INSTALL  (PGM)                                   */
+000700181219     /*  Source member : A_INSTALL                                          */
+000800181219     /*  Source type . : CLLE                                               */
+000900190131     /*  Description   : DSPLIBSIZ - Installer                              */
+001000181219     /*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      */
+001100181219     /*                                                                     */
+001200181219     /* =================================================================== */
+001300181219     /*                                                                     */
+001400181219     /*  This software is free software, you can redistribute it and/or     */
+001500181219     /*  modify it under the terms of the GNU General Public License (GPL)  */
+001600181219     /*  as published by the Free Software Foundation.                      */
+001700181219     /*                                                                     */
+001800181219     /*  See GNU General Public License for details.                        */
+001900181219     /*          http://www.opensource.org                                  */
+002000181219     /*          http://www.opensource.org/licenses/gpl-license.html        */
+002100181219     /*                                                                     */
+002200181219     /* =================================================================== */
+002300181219     /*  History:                                                           */
+002400181219     /*                                                                     */
+002500181219     /*  Datum       Name          Änderung                                 */
+002600181219     /*  ----------  ------------  ---------------------------------------  */
+002700181219     /*                                                                     */
+002800181219     /* =================================================================== */
+002900181219     /*   >>PRE-COMPILER<<                                                  */
+003000181219     /*     >>CRTCMD<<    CRTBNDCL  PGM(QTEMP/&OB) +                        */
+003100181219     /*                             SRCFILE(&SL/&SF) SRCMBR(&SM);           */
+003200181219     /*     >>IMPORTANT<<                                                   */
+003300181219     /*       >>PARM<<    OPTION(*EVENTF);                                  */
+003400181219     /*     >>END-IMPORTANT<<                                               */
+003500181219     /*     >>EXECUTE<<                                                     */
+003600181219     /*     >>CMD<<       CALL   PGM(QTEMP/A_INSTALL) +                     */
+003700181219     /*                          PARM('*CURRENT' '&SF' '&LI' 'GER');        */
+003800181219     /*     >>CMD<<       DLTPGM PGM(QTEMP/A_INSTALL);                      */
+003900181219     /*   >>END-PRE-COMPILER<<                                              */
+004000181219     /* =================================================================== */
+004100181219             PGM        PARM(&TGTRLS &SRCFILE &TOLIB &LNG)
+004200181219
+004300181219             DCL        VAR(&TGTRLS   ) TYPE(*CHAR) LEN(10)
+004400181219             DCL        VAR(&SRCFILE  ) TYPE(*CHAR) LEN(10)
+004500181219             DCL        VAR(&TOLIB    ) TYPE(*CHAR) LEN(10)
+004600181219             DCL        VAR(&LNG      ) TYPE(*CHAR) LEN( 3)
+004700181219
+004800181219             DCL        VAR(&SRCLIB   ) TYPE(*CHAR) LEN(10)
+004900181219
+005000190131             DCL        VAR(&PNLGRP   ) TYPE(*CHAR) LEN(10)
+005300181219             DCL        VAR(&CMD      ) TYPE(*CHAR) LEN(10)
+005400181219
+005500181219             CHGVAR     VAR(&SRCLIB) VALUE(&TOLIB   )
+005600181219
+005700181219     /* -------------------------------- */
+005800181219     /*  Delete old objects              */
+005900181219     /* -------------------------------- */
+006000190131             DLTCMD     CMD(&TOLIB/DSPLIBSIZ)
+006100181219             MONMSG     MSGID(CPF2105)
+006200181219
+006300190131             DLTPGM     PGM(&TOLIB/DSPLIBSIZR)
+006400181219             MONMSG     MSGID(CPF2105)
+006500181219
+007500190131             DLTMOD     MODULE(&TOLIB/DSPLIBSIZR)
+007600181219             MONMSG     MSGID(CPF2105)
+007700181219
+008400190131             DLTPNLGRP  PNLGRP(&TOLIB/DSPLIBSIZ)
+008500181219             MONMSG     MSGID(CPF2105)
+008600181219
+008700181219             RMVMSG     PGMQ(*SAME (*)) CLEAR(*ALL)
+008800181219
+008900181219     /* -------------------------------- */
+009000181219     /*  Create message file             */
+009100181219     /* -------------------------------- */
+009200181219             IF         COND(&LNG *EQ 'ENG') THEN(DO)
+009300190131                CHGVAR     VAR(&PNLGRP ) VALUE('DSPLIBSIPE')
+009500190131                CHGVAR     VAR(&CMD    ) VALUE('DSPLIBSIZE')
+009600181219             ENDDO
+009700181219             ELSE       CMD(DO)
+009800190131                CHGVAR     VAR(&PNLGRP ) VALUE('DSPLIBSIPG')
+010000190131                CHGVAR     VAR(&CMD    ) VALUE('DSPLIBSIZG')
+010100181219             ENDDO
+010200181219
+011600181219     /* -------------------------------- */
+011700181219     /*  Create modules                  */
+011800181219     /* -------------------------------- */
+011900190131             CRTRPGMOD  MODULE(&TOLIB/DSPLIBSIZR) +
+012000181219                          SRCFILE(&SRCLIB/&SRCFILE) SRCMBR(*MODULE) +
+012100181219                          DBGVIEW(*LIST) TRUNCNBR(*NO) +
+012200181219                          TGTRLS(&TGTRLS)
+012300190131             DLTSPLF    FILE(DSPLIBSIZR) JOB(*) SPLNBR(*LAST)
+012400181219             MONMSG     MSGID(CPF0000)
+012500181219
+013300181219     /* -------------------------------- */
+013400181219     /*  Create programs                 */
+013500181219     /* -------------------------------- */
+013600190131             CRTPGM     PGM(&TOLIB/DSPLIBSIZR) +
+013700190131                          MODULE(&TOLIB/DSPLIBSIZR) +
+013800181219                          DETAIL(*BASIC)            +
+013900181219                          ACTGRP(*NEW) +
+014000181219                          TGTRLS(&TGTRLS)
+014100190131             DLTSPLF    FILE(DSPLIBSIZR) JOB(*) SPLNBR(*LAST)
+014200181219             MONMSG     MSGID(CPF0000)
+014300181219
+014400190131             CRTPGM     PGM(&TOLIB/DSPLIBSIZR) +
+014500190131                          MODULE(&TOLIB/DSPLIBSIZR) +
+014600181219                          DETAIL(*BASIC)            +
+014700181219                          ACTGRP(*NEW) +
+014800181219                          TGTRLS(&TGTRLS)
+014900190131             DLTSPLF    FILE(DSPLIBSIZR) JOB(*) SPLNBR(*LAST)
+015000181219             MONMSG     MSGID(CPF0000)
+015100181219
+015200181219     /* -------------------------------- */
+015300181219     /*  Create panel groups             */
+015400181219     /* -------------------------------- */
+015500190131             CRTPNLGRP PNLGRP(&TOLIB/DSPLIBSIZ) +
+015600181219                          SRCFILE(&SRCLIB/&SRCFILE) +
+015700181219                          SRCMBR(&PNLGRP)
+015800190131             DLTSPLF    FILE(DSPLIBSIZ) JOB(*) SPLNBR(*LAST)
+015900181219             MONMSG     MSGID(CPF0000)
+016000181219
+016100181219     /* -------------------------------- */
+016200181219     /*  Create commands                 */
+016300181219     /* -------------------------------- */
+016400190131             CRTCMD     CMD(&TOLIB/DSPLIBSIZ)                    +
+016500181219                          SRCFILE(&SRCLIB/&SRCFILE) SRCMBR(&CMD) +
+016600190131                          PGM(&TOLIB/DSPLIBSIZR)                 +
+016700181219                          HLPSCHIDX(*NONE)                       +
+016800190131                          HLPPNLGRP(*LIBL/DSPLIBSIZ )            +
+016900190131                          HLPID(DSPLIBSIZ )                      +
+017000190131                          PRDLIB(&TOLIB)
+017200181219             DLTSPLF    FILE(&CMD      ) JOB(*) SPLNBR(*LAST)
+017300181219             MONMSG     MSGID(CPF0000)
+017400181219
+017500181219     /* -------------------------------- */
+017600181219     /*  Delete obsolete objects         */
+017700181219     /* -------------------------------- */
+017800190131             DLTMOD     MODULE(&TOLIB/DSPLIBSIZR)
+017900190131
+018100181219             ENDPGM
