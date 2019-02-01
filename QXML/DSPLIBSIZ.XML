@@ -51,7 +51,7 @@
       appblddate CDATA #REQUIRED
      >
      ]>
-<upload  appname="DSPLIBSIZ"  appauthor="Thomas Raddatz"  appblddate=" 1/31/2019">
+<upload  appname="DSPLIBSIZ"  appauthor="Thomas Raddatz"  appblddate=" 2/01/2019">
 <install_instructions><![CDATA[
      *----------------------------------------------------------------      ------
      *  1. Upload entire XML to your AS/400 to a source file 112 long, into any mbr
@@ -1315,7 +1315,7 @@ srccssid=  "00273">
      /* =================================================================== */
      /*  History:                                                           */
      /*                                                                     */
-     /*  Datum       Name          Ã„nderung                                 */
+     /*  Datum       Name          Änderung                                 */
      /*  ----------  ------------  ---------------------------------------  */
      /*                                                                     */
      /* =================================================================== */
@@ -1526,7 +1526,7 @@ srccssid=  "00273">
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name          Ã„nderung                                 *
+.*  Datum       Name          Änderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -1550,7 +1550,7 @@ srccssid=  "00273">
 :IMHELP name='DSPLIBSIZ/LIB       '.
 :EHELP.
 .*--------------------------------------------------------------------
-.* Hilfetext fÃ¼r den Befehl
+.* Hilfetext für den Befehl
 .*--------------------------------------------------------------------
 :HELP NAME='DSPLIBSIZ'.
 Display Library Size (DSPLIBSIZ) - Help
@@ -1561,7 +1561,7 @@ size contains the size of all objects included in the library.
 :EHELP.
 .*
 .*--------------------------------------------------------------------
-.* Hilfetext fÃ¼r SchlÃ¼sselwort LIB
+.* Hilfetext für Schlüsselwort LIB
 .*--------------------------------------------------------------------
 :HELP name='DSPLIBSIZ/LIB       '.
 Library - Help
@@ -1650,7 +1650,7 @@ srccssid=  "00273">
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name          Ã„nderung                                 *
+.*  Datum       Name          Änderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -1674,30 +1674,30 @@ srccssid=  "00273">
 :IMHELP name='DSPLIBSIZ/LIB       '.
 :EHELP.
 .*--------------------------------------------------------------------
-.* Hilfetext fÃ¼r den Befehl
+.* Hilfetext für den Befehl
 .*--------------------------------------------------------------------
 :HELP NAME='DSPLIBSIZ'.
-Anzeigen BibliotheksgrÃ¶ÃŸe (DSPLIBSIZ) - Hilfe
+Anzeigen Bibliotheksgröße (DSPLIBSIZ) - Hilfe
 :P.
-Der Befehl DSPLIBSIZ ermittelt die GesamtgrÃ¶ÃŸe einer Bibliothek
+Der Befehl DSPLIBSIZ ermittelt die Gesamtgröße einer Bibliothek
 inclusive aller enthaltenen Objekte.
 .*
 :EHELP.
 .*
 .*--------------------------------------------------------------------
-.* Hilfetext fÃ¼r SchlÃ¼sselwort LIB
+.* Hilfetext für Schlüsselwort LIB
 .*--------------------------------------------------------------------
 :HELP name='DSPLIBSIZ/LIB       '.
 Bibliothek - Hilfe
 :XH3.Bibliothek (LIB)
 :P.
-Name der Bibliothek, deren GesamtgrÃ¶ÃŸe ermittelt werden soll.
+Name der Bibliothek, deren Gesamtgröße ermittelt werden soll.
 .*
 :IMHELP name='COM/REQPARM'.
 .*
 :PARML.
 :PT.:PV.Bibliotheksname:EPV.
-:PD.Name der Bibliothek deren GrÃ¶ÃŸe ermittelt werden soll.
+:PD.Name der Bibliothek deren Größe ermittelt werden soll.
 :EPARML.
 .*
 :EHELP.
@@ -1732,7 +1732,7 @@ Dieser Parameter ist optional.
 .*=====================================
 :HELP NAME='COM/VALUES'.
 :P.
-MÃ¶gliche Werte sind:
+Mögliche Werte sind:
 :EHELP.
 .*
 :EPNLGRP.
@@ -1774,7 +1774,7 @@ srccssid=  "00273">
 /* =================================================================== */
 /*  History:                                                           */
 /*                                                                     */
-/*  Datum       Name          Ã„nderung                                 */
+/*  Datum       Name          Änderung                                 */
 /*  ----------  ------------  ---------------------------------------  */
 /*                                                                     */
 /* =================================================================== */
@@ -1845,7 +1845,7 @@ srccssid=  "00273">
 /* =================================================================== */
 /*  History:                                                           */
 /*                                                                     */
-/*  Datum       Name          Ã„nderung                                 */
+/*  Datum       Name          Änderung                                 */
 /*  ----------  ------------  ---------------------------------------  */
 /*                                                                     */
 /* =================================================================== */
@@ -1867,7 +1867,7 @@ srccssid=  "00273">
 /* >>END-PRE-COMPILER<<                                                */
 /* =================================================================== */
 
-             CMD        PROMPT('Anzeigen BibliotheksgrÃ¶ÃŸe')
+             CMD        PROMPT('Anzeigen Bibliotheksgröße')
 
              PARM       KWD(LIB)               +
                         TYPE(*NAME)            +
@@ -1916,7 +1916,7 @@ srccssid=  "00273">
        //=====================================================================*
        //  History:                                                           *
        //                                                                     *
-       //  Datum       Name          Ã„nderung                                 *
+       //  Datum       Name          Änderung                                 *
        //  ----------  ------------  ---------------------------------------  *
        //                                                                     *
        //=====================================================================*
@@ -1939,7 +1939,7 @@ srccssid=  "00273">
        //=====================================================================*
 
        // ----------------------------------------------------------------------
-       //  Definitionen fÃ¼r QLIRLIBD API
+       //  Definitionen für QLIRLIBD API
        // ----------------------------------------------------------------------
        //  ... Receiver Variable
      D rcvVar          DS           512    qualified
@@ -2028,7 +2028,7 @@ srccssid=  "00273">
      D  i_errCode                          value  likeds(errCode_t)
 
        // ----------------------------------------------------------------------
-       //  Definitionen fÃ¼r QMHSNDPM API
+       //  Definitionen für QMHSNDPM API
        // ----------------------------------------------------------------------
      D QMHSNDPM        PR                  extpgm('QMHSNDPM')
      D  i_msgID                       7A   const
@@ -2082,7 +2082,7 @@ srccssid=  "00273">
        FOR i = 1 TO rcvVar.numRet;
 
           Select;
-             //  ... BibliotheksgrÃ¶ÃŸe
+             //  ... Bibliotheksgröße
           When (varLenRcd.keyID = cSIZE);
              Exsr getLibSize;
              //  ... Bibliotheksbeschreibung (Text)
@@ -2113,14 +2113,14 @@ srccssid=  "00273">
        Endsr;
 
        // ----------------------------------------------------------------------
-       //  Anzeigen der BibliotheksgrÃ¶ÃŸe
+       //  Anzeigen der Bibliotheksgröße
        // ----------------------------------------------------------------------
        Begsr getLibSize;
 
-          //  Ermitteln der GrÃ¶ÃŸe (Objekte in Bibliothek)
+          //  Ermitteln der Größe (Objekte in Bibliothek)
           pLibSize = pVarLenRcd + %size(varLenRcd);
 
-          //  Aufbereiten der Nachricht (Nicht alle Objekte berÃ¼cksichtigt)
+          //  Aufbereiten der Nachricht (Nicht alle Objekte berücksichtigt)
           If (libSize.infStat = '0');
 
              Select;
@@ -2128,7 +2128,7 @@ srccssid=  "00273">
                 msgData = 'Nicht alle Objekte von +
                           Bibliothek ' +
                             %trim(i_lib) +
-                         ' berÃ¼cksichtigt.';
+                         ' berücksichtigt.';
              When (i_language = 'ENG');
                 msgData = 'Not all objects of +
                           library ' +
@@ -2146,14 +2146,14 @@ srccssid=  "00273">
 
           Endif;
 
-          //  Aufbereiten der Nachricht (GrÃ¶ÃŸe)
+          //  Aufbereiten der Nachricht (Größe)
           totLibSize = libSize.size * libSize.mult;
 
           Select;
           When (i_language = 'GER');
              msgData = 'Bibliothek: ' +
                          %trim(i_lib) +
-                      ' - GrÃ¶ÃŸe: ' +
+                      ' - Größe: ' +
                          %trim(%editc(totLibSize: 'K')) +
                       ' Byte.';
           When (i_language = 'ENG');

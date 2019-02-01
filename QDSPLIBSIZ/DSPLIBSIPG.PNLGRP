@@ -1,109 +1,109 @@
-000100000000.*=====================================================================*
-000200000000.*                                                                     *
-000300000000.*  Kurzdokumentation :                                                *
-000400000000.*                                                                     *
-000500000000.*  Bereich . . . : DSLIBSIZ                                           *
-000600000000.*  Objekt  . . . : DSLIBSIZP                                          *
-000700000000.*  Beschreibung  : Tool: DSPLIBSIZ  (Display Library Size) Ger        *
-000800000000.*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
-000900000000.*  Datum . . . . : xx.xx.xxxx                                         *
-001000000000.*                                                                     *
-001100000000.*=====================================================================*
-001200000000.*                                                                     *
-001300000000.*  This software is free software, you can redistribute it and/or     *
-001400000000.*  modify it under the terms of the GNU General Public License (GPL)  *
-001500000000.*  as published by the Free Software Foundation.                      *
-001600000000.*                                                                     *
-001700000000.*  See GNU General Public License for details.                        *
-001800000000.*          http://www.opensource.org                                  *
-001900000000.*          http://www.opensource.org/licenses/gpl-license.html        *
-002000000000.*                                                                     *
-002100000000.*=====================================================================*
-002200000000.*  History:                                                           *
-002300000000.*                                                                     *
-002400000000.*  Datum       Name          Änderung                                 *
-002500000000.*  ----------  ------------  ---------------------------------------  *
-002600000000.*                                                                     *
-002700000000.*=====================================================================*
-002800000000.* >>PRE-COMPILER<<                                                    *
-002900000000.*                                                                     *
-003000000000.*   >>CRTCMD<< CRTPNLGRP    PNLGRP(&LI/&OB) +                         *
-003100000000.*                           SRCFILE(&SL/&SF) +                        *
-003200000000.*                           SRCMBR(&SM);                              *
-003300000000.*                                                                     *
-003400000000.*   >>COMPILE<<                                                       *
-003500000000.*   >>END-COMPILE<<                                                   *
-003600000000.*                                                                     *
-003700000000.*   >>EXECUTE<<                                                       *
-003800000000.*                                                                     *
-003900000000.* >>END-PRE-COMPILER<<                                                *
-004000000000.*=====================================================================*
-004100000000:PNLGRP.
-004200000000.*
-004300000000:HELP name='DSPLIBSIZ/ALL'.
-004400000000:IMHELP name=DSPLIBSIZ.
-004500000000:IMHELP name='DSPLIBSIZ/LIB       '.
-004600000000:EHELP.
-004700000000.*--------------------------------------------------------------------
-004800000000.* Hilfetext für den Befehl
-004900000000.*--------------------------------------------------------------------
-005000000000:HELP NAME='DSPLIBSIZ'.
-005100000000Anzeigen Bibliotheksgröße (DSPLIBSIZ) - Hilfe
-005200000000:P.
-005300000000Der Befehl DSPLIBSIZ ermittelt die Gesamtgröße einer Bibliothek
-005400000000inclusive aller enthaltenen Objekte.
-005500000000.*
-005600000000:EHELP.
-005700000000.*
-005800000000.*--------------------------------------------------------------------
-005900000000.* Hilfetext für Schlüsselwort LIB
-006000000000.*--------------------------------------------------------------------
-006100000000:HELP name='DSPLIBSIZ/LIB       '.
-006200000000Bibliothek - Hilfe
-006300000000:XH3.Bibliothek (LIB)
-006400000000:P.
-006500000000Name der Bibliothek, deren Gesamtgröße ermittelt werden soll.
-006600000000.*
-006700000000:IMHELP name='COM/REQPARM'.
-006800000000.*
-006900000000:PARML.
-007000000000:PT.:PV.Bibliotheksname:EPV.
-007100000000:PD.Name der Bibliothek deren Größe ermittelt werden soll.
-007200000000:EPARML.
-007300000000.*
-007400000000:EHELP.
-007500000000.*
-007600000000.*====================================================================
-007700000000.*  Textbausteine, die an mehreren Stellen im Hilfetext
-007800000000.*  verwendet werden.
-007900000000.*====================================================================
-008000000000
-008100000000.*=====================================
-008200000000.*  Erforderlicher Parameter
-008300000000.*=====================================
-008400000000:HELP NAME='COM/REQPARM'.
-008500000000:P.
-008600000000Dieser Parameter ist erforderlich.
-008700000000:P.
-008800000000:IMHELP name='COM/VALUES'.
-008900000000:EHELP.
-009000000000
-009100000000.*=====================================
-009200000000.*  Optionaler Parameter
-009300000000.*=====================================
-009400000000:HELP NAME='COM/OPTPARM'.
-009500000000:P.
-009600000000Dieser Parameter ist optional.
-009700000000:P.
-009800000000:IMHELP name='COM/VALUES'.
-009900000000:EHELP.
-010000000000
-010100000000.*=====================================
-010200000000.*  Werteliste
-010300000000.*=====================================
-010400000000:HELP NAME='COM/VALUES'.
-010500000000:P.
-010600000000Mögliche Werte sind:
-010700000000:EHELP.
-010800000000.*
-010900000000:EPNLGRP.
+.*=====================================================================*
+.*                                                                     *
+.*  Kurzdokumentation :                                                *
+.*                                                                     *
+.*  Bereich . . . : DSLIBSIZ                                           *
+.*  Objekt  . . . : DSLIBSIZP                                          *
+.*  Beschreibung  : Tool: DSPLIBSIZ  (Display Library Size) Ger        *
+.*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
+.*  Datum . . . . : xx.xx.xxxx                                         *
+.*                                                                     *
+.*=====================================================================*
+.*                                                                     *
+.*  This software is free software, you can redistribute it and/or     *
+.*  modify it under the terms of the GNU General Public License (GPL)  *
+.*  as published by the Free Software Foundation.                      *
+.*                                                                     *
+.*  See GNU General Public License for details.                        *
+.*          http://www.opensource.org                                  *
+.*          http://www.opensource.org/licenses/gpl-license.html        *
+.*                                                                     *
+.*=====================================================================*
+.*  History:                                                           *
+.*                                                                     *
+.*  Datum       Name          Änderung                                 *
+.*  ----------  ------------  ---------------------------------------  *
+.*                                                                     *
+.*=====================================================================*
+.* >>PRE-COMPILER<<                                                    *
+.*                                                                     *
+.*   >>CRTCMD<< CRTPNLGRP    PNLGRP(&LI/&OB) +                         *
+.*                           SRCFILE(&SL/&SF) +                        *
+.*                           SRCMBR(&SM);                              *
+.*                                                                     *
+.*   >>COMPILE<<                                                       *
+.*   >>END-COMPILE<<                                                   *
+.*                                                                     *
+.*   >>EXECUTE<<                                                       *
+.*                                                                     *
+.* >>END-PRE-COMPILER<<                                                *
+.*=====================================================================*
+:PNLGRP.
+.*
+:HELP name='DSPLIBSIZ/ALL'.
+:IMHELP name=DSPLIBSIZ.
+:IMHELP name='DSPLIBSIZ/LIB       '.
+:EHELP.
+.*--------------------------------------------------------------------
+.* Hilfetext für den Befehl
+.*--------------------------------------------------------------------
+:HELP NAME='DSPLIBSIZ'.
+Anzeigen Bibliotheksgröße (DSPLIBSIZ) - Hilfe
+:P.
+Der Befehl DSPLIBSIZ ermittelt die Gesamtgröße einer Bibliothek
+inclusive aller enthaltenen Objekte.
+.*
+:EHELP.
+.*
+.*--------------------------------------------------------------------
+.* Hilfetext für Schlüsselwort LIB
+.*--------------------------------------------------------------------
+:HELP name='DSPLIBSIZ/LIB       '.
+Bibliothek - Hilfe
+:XH3.Bibliothek (LIB)
+:P.
+Name der Bibliothek, deren Gesamtgröße ermittelt werden soll.
+.*
+:IMHELP name='COM/REQPARM'.
+.*
+:PARML.
+:PT.:PV.Bibliotheksname:EPV.
+:PD.Name der Bibliothek deren Größe ermittelt werden soll.
+:EPARML.
+.*
+:EHELP.
+.*
+.*====================================================================
+.*  Textbausteine, die an mehreren Stellen im Hilfetext
+.*  verwendet werden.
+.*====================================================================
+
+.*=====================================
+.*  Erforderlicher Parameter
+.*=====================================
+:HELP NAME='COM/REQPARM'.
+:P.
+Dieser Parameter ist erforderlich.
+:P.
+:IMHELP name='COM/VALUES'.
+:EHELP.
+
+.*=====================================
+.*  Optionaler Parameter
+.*=====================================
+:HELP NAME='COM/OPTPARM'.
+:P.
+Dieser Parameter ist optional.
+:P.
+:IMHELP name='COM/VALUES'.
+:EHELP.
+
+.*=====================================
+.*  Werteliste
+.*=====================================
+:HELP NAME='COM/VALUES'.
+:P.
+Mögliche Werte sind:
+:EHELP.
+.*
+:EPNLGRP.
