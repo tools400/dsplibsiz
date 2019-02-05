@@ -102,14 +102,6 @@
              DLTSPLF    FILE(DSPLIBSIZR) JOB(*) SPLNBR(*LAST)
              MONMSG     MSGID(CPF0000)
 
-             CRTPGM     PGM(&TOLIB/DSPLIBSIZR) +
-                          MODULE(&TOLIB/DSPLIBSIZR) +
-                          DETAIL(*BASIC)            +
-                          ACTGRP(*NEW) +
-                          TGTRLS(&TGTRLS)
-             DLTSPLF    FILE(DSPLIBSIZR) JOB(*) SPLNBR(*LAST)
-             MONMSG     MSGID(CPF0000)
-
      /* -------------------------------- */
      /*  Create panel groups             */
      /* -------------------------------- */

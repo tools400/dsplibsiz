@@ -51,7 +51,7 @@
       appblddate CDATA #REQUIRED
      >
      ]>
-<upload  appname="DSPLIBSIZ"  appauthor="Thomas Raddatz"  appblddate=" 2/01/2019">
+<upload  appname="DSPLIBSIZ"  appauthor="Thomas Raddatz"  appblddate=" 2/05/2019">
 <install_instructions><![CDATA[
      *----------------------------------------------------------------      ------
      *  1. Upload entire XML to your AS/400 to a source file 112 long, into any mbr
