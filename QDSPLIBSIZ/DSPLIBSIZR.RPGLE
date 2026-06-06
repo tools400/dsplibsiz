@@ -1,353 +1,354 @@
-       //=====================================================================*
-       //                                                                     *
-       //  Kurzdokumentation :                                                *
-       //                                                                     *
-       //  Bereich . . . : DSPLIBSIZ                                          *
-       //  Objekt  . . . : DSPLIBSIZR                                         *
-       //  Beschreibung  : Tool: DSPLIBSIZ  (Display Library Size)            *
-       //  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
-       //  Datum . . . . : xx.xx.xxxx                                         *
-       //                                                                     *
-       //=====================================================================*
-       //                                                                     *
-       //  This software is free software, you can redistribute it and/or     *
-       //  modify it under the terms of the GNU General Public License (GPL)  *
-       //  as published by the Free Software Foundation.                      *
-       //                                                                     *
-       //  See GNU General Public License for details.                        *
-       //          http://www.opensource.org                                  *
-       //          http://www.opensource.org/licenses/gpl-license.html        *
-       //                                                                     *
-       //=====================================================================*
-       //  History:                                                           *
-       //                                                                     *
-       //  Datum       Name          Änderung                                 *
-       //  ----------  ------------  ---------------------------------------  *
-       //                                                                     *
-       //=====================================================================*
-       // >>PRE-COMPILER<<                                                    *
-       //   >>CRTCMD<< CRTRPGMOD    MODULE(&LI/&OB) +                         *
-       //                           SRCFILE(&SL/&SF) SRCMBR(&SM);             *
-       //   >>IMPORTANT<<                                                     *
-       //     >>PARM<< TRUNCNBR(*NO);                                         *
-       //     >>PARM<< DBGVIEW(*LIST);                                        *
-       //   >>END-IMPORTANT<<                                                 *
-       //   >>EXECUTE<<                                                       *
-       //   >>CMD<<    CRTPGM       PGM(&LI/&OB) +                            *
-       //                           MODULE(&LI/&OB) +                         *
-       //                           ACTGRP(*NEW) +                            *
-       //                           DETAIL(*BASIC);                           *
-       // >>END-PRE-COMPILER<<                                                *
-       //=====================================================================*
-     H DEBUG DECEDIT('0,') DATEDIT(*DMY.)
-      /COPY QDSPLIBSIZ,COPYRIGHT
-       //=====================================================================*
+**free
+//=====================================================================*
+//                                                                     *
+//  Kurzdokumentation :                                                *
+//                                                                     *
+//  Bereich . . . : DSPLIBSIZ                                          *
+//  Objekt  . . . : DSPLIBSIZR                                         *
+//  Beschreibung  : Tool: DSPLIBSIZ  (Display Library Size)            *
+//  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
+//  Datum . . . . : xx.xx.xxxx                                         *
+//                                                                     *
+//=====================================================================*
+//                                                                     *
+//  This software is free software, you can redistribute it and/or     *
+//  modify it under the terms of the GNU General Public License (GPL)  *
+//  as published by the Free Software Foundation.                      *
+//                                                                     *
+//  See GNU General Public License for details.                        *
+//          http://www.opensource.org                                  *
+//          http://www.opensource.org/licenses/gpl-license.html        *
+//                                                                     *
+//=====================================================================*
+//  History:                                                           *
+//                                                                     *
+//  Datum       Name          Ã„nderung                                 *
+//  ----------  ------------  ---------------------------------------  *
+//                                                                     *
+//=====================================================================*
+// >>PRE-COMPILER<<                                                    *
+//   >>CRTCMD<< CRTRPGMOD    MODULE(&LI/&OB) +                         *
+//                           SRCFILE(&SL/&SF) SRCMBR(&SM);             *
+//   >>IMPORTANT<<                                                     *
+//     >>PARM<< TRUNCNBR(*NO);                                         *
+//     >>PARM<< DBGVIEW(*LIST);                                        *
+//   >>END-IMPORTANT<<                                                 *
+//   >>EXECUTE<<                                                       *
+//   >>CMD<<    CRTPGM       PGM(&LI/&OB) +                            *
+//                           MODULE(&LI/&OB) +                         *
+//                           ACTGRP(*NEW) +                            *
+//                           DETAIL(*BASIC);                           *
+// >>END-PRE-COMPILER<<                                                *
+//=====================================================================*
+ctl-opt debug decedit('0,') datedit(*DMY.);
+/copy QDSPLIBSIZ,COPYRIGHT
+//=====================================================================*
 
-       // ----------------------------------------------------------------------
-       //  Definitionen für QLIRLIBD API
-       // ----------------------------------------------------------------------
-       //  ... Receiver Variable
-     D rcvVar          DS           512    qualified
-     D bytRet                        10I 0 inz
-     D bytAvl                        10I 0 inz
-     D numRet                        10I 0 inz
-     D numAvl                        10I 0 inz
+// ----------------------------------------------------------------------
+//  Definitionen fÃ¼r QLIRLIBD API
+// ----------------------------------------------------------------------
+//  ... Receiver Variable
+dcl-ds rcvVar len(512) qualified;
+  bytRet int(10) inz;
+  bytAvl int(10) inz;
+  numRet int(10) inz;
+  numAvl int(10) inz;
+end-ds;
 
-       //  ... Attributes to retreive
-       //      ... Type of library
-     D cTYPE           C                   1
-       //      ... ASP
-     D cASP            C                   2
-       //      ... Create authority
-     D cCRTAUTH        C                   3
-       //      ... Create object auditing
-     D cCRTAUD         C                   4
-       //      ... Text description
-     D cTEXT           C                   5
-       //      ... Library size information
-     D cSIZE           C                   6
-       //      ... Number of objects in library
-     D cNUMOBJ         C                   7
+//  ... Attributes to retreive
+//      ... Type of library
+dcl-c cTYPE 1;
+//      ... ASP
+dcl-c cASP 2;
+//      ... Create authority
+dcl-c cCRTAUTH 3;
+//      ... Create object auditing
+dcl-c cCRTAUD 4;
+//      ... Text description
+dcl-c cTEXT 5;
+//      ... Library size information
+dcl-c cSIZE 6;
+//      ... Number of objects in library
+dcl-c cNUMOBJ 7;
 
-       //  ... Attributes to retrieve (return value)
-     D attrToRtv       DS                  qualified
-     D numAttr                       10I 0 inz
-     D attr1                         10I 0 inz
-     D attr2                         10I 0 inz
-     D attr3                         10I 0 inz
-     D attr4                         10I 0 inz
-     D attr5                         10I 0 inz
-     D attr6                         10I 0 inz
-     D attr7                         10I 0 inz
+//  ... Attributes to retrieve (return value)
+dcl-ds attrToRtv qualified;
+  numAttr int(10) inz;
+  attr1   int(10) inz;
+  attr2   int(10) inz;
+  attr3   int(10) inz;
+  attr4   int(10) inz;
+  attr5   int(10) inz;
+  attr6   int(10) inz;
+  attr7   int(10) inz;
+end-ds;
 
-       //  ... Data returned
-     D varLenRcd       DS                  qualified based(pVarLenRcd)
-     D dtaLen                        10I 0
-     D keyID                         10I 0
-     D fldSize                       10I 0
+//  ... Data returned
+dcl-ds varLenRcd qualified based(pVarLenRcd);
+  dtaLen  int(10);
+  keyID   int(10);
+  fldSize int(10);
+end-ds;
 
-       //  ... Library Size Information Format
-     D libSize         DS                  qualified based(pLibSize)
-     D size                          10I 0
-     D mult                          10I 0
-     D infStat                        1A
-     D res01                          3A
+//  ... Library Size Information Format
+dcl-ds libSize qualified based(pLibSize);
+  size    int(10);
+  mult    int(10);
+  infStat char(1);
+  res01   char(3);
+end-ds;
 
-       //  ... Library Text Information Format
-     D libDesc         DS                  qualified based(pLibDesc)
-     D text                          50A
-     D
+//  ... Library Text Information Format
+dcl-ds libDesc qualified based(pLibDesc);
+  text char(50);
+end-ds;
 
-       // ----------------------------------------------------------------------
-       //  Referenzfelder
-       // ----------------------------------------------------------------------
-     D bool_t          S               N   based(pDummy)
 
-      /COPY QDSPLIBSIZ,FDERRCODE
-      /COPY QDSPLIBSIZ,FDQOBJ
+// ----------------------------------------------------------------------
+//  Referenzfelder
+// ----------------------------------------------------------------------
+dcl-s bool_t ind based(pDummy);
 
-       // ----------------------------------------------------------------------
-       //  Konstanten
-       // ----------------------------------------------------------------------
-     D cTRUE           C                   *on
-     D cFALSE          C                   *off
+/copy QDSPLIBSIZ,FDERRCODE
+/copy QDSPLIBSIZ,FDQOBJ
 
-       // ----------------------------------------------------------------------
-       //  Prototypen
-       // ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+//  Konstanten
+// ----------------------------------------------------------------------
+dcl-c cTRUE *on;
+dcl-c cFALSE *off;
 
-       // Retrieve Library Description (QLIRLIBD) API
-     D QLIRLIBD        PR                  extpgm('QLIRLIBD')
-     D  o_rcvVar                  32767A          options(*varsize)
-     D  i_rcvVarLen                  10I 0 const
-     D  i_lib                        10A   const
-     D  i_attrToRtv               32767A   const  options(*varsize)
-     D  io_errCode                32767A          options(*varsize)
+// ----------------------------------------------------------------------
+//  Prototypen
+// ----------------------------------------------------------------------
 
-     D f_newApiErrCode...
-     D                 PR                         likeds(errCode_t)
-     D  i_monMsg                       N   value
+// Retrieve Library Description (QLIRLIBD) API
+dcl-pr QLIRLIBD extpgm('QLIRLIBD');
+  o_rcvVar    char(32767) options(*varsize);
+  i_rcvVarLen int(10) const;
+  i_lib       char(10) const;
+  i_attrToRtv char(32767) options(*varsize) const;
+  io_errCode  char(32767) options(*varsize);
+end-pr;
 
-     D f_isApiErr...
-     D                 PR              N
-     D  i_errCode                          value  likeds(errCode_t)
+dcl-pr f_newApiErrCode likeds(errCode_t);
+  i_monMsg ind value;
+end-pr;
 
-       // ----------------------------------------------------------------------
-       //  Definitionen für QMHSNDPM API
-       // ----------------------------------------------------------------------
-     D QMHSNDPM        PR                  extpgm('QMHSNDPM')
-     D  i_msgID                       7A   const
-     D  i_qMsgF                      20A   const
-     D  i_msgData                 32767A   const  options(*varsize)
-     D  i_lenMsgData                 10I 0 const
-     D  i_msgType                    10A   const
-     D  i_callStkE                   10A   const
-     D  i_callStkC                   10I 0 const
-     D  o_msgKey                      4A
-     D  io_errCode                32767A          options(*varsize)
-       //  optional parameter group 1
-     D  i_lenCallStkE                10I 0 const  options(*nopass )
-     D  i_callStkEQ                  20A   const  options(*nopass )
-     D  i_dspMsgWait                 10I 0 const  options(*nopass )
-       //  optional parameter group 2
-     D  i_callStkEDT                 10A   const  options(*nopass )
-     D  i_ccsid                      10I 0 const  options(*nopass )
+dcl-pr f_isApiErr ind;
+  i_errCode likeds(errCode_t) value;
+end-pr;
 
-     D msgKey          S              4A   inz
-     D totLibSize      S             20S 0 inz
-     D msgData         S             80A   inz
-     D qMsgF           DS                  likeds(qObj_t) inz
-     D errCode         DS                  likeds(errCode_t) inz
+// ----------------------------------------------------------------------
+//  Definitionen fÃ¼r QMHSNDPM API
+// ----------------------------------------------------------------------
+dcl-pr QMHSNDPM extpgm('QMHSNDPM');
+  i_msgID       char(7) const;
+  i_qMsgF       char(20) const;
+  i_msgData     char(32767) options(*varsize) const;
+  i_lenMsgData  int(10) const;
+  i_msgType     char(10) const;
+  i_callStkE    char(10) const;
+  i_callStkC    int(10) const;
+  o_msgKey      char(4);
+  io_errCode    char(32767) options(*varsize);
+  //  optional parameter group 1
+  i_lenCallStkE int(10) options(*nopass) const;
+  i_callStkEQ   char(20) options(*nopass) const;
+  i_dspMsgWait  int(10) options(*nopass) const;
+  //  optional parameter group 2
+  i_callStkEDT  char(10) options(*nopass) const;
+  i_ccsid       int(10) options(*nopass) const;
+end-pr;
 
-       // ----------------------------------------------------------------------
-       //  *ENTYR Felder
-       // ----------------------------------------------------------------------
-     D DSPLIBSIZR...
-     D                 PR                         extpgm('DSPLIBSIZR')
-     D  i_lib                        10A   const
-     D  i_language                    3A   const
+dcl-s msgKey char(4) inz;
+dcl-s totLibSize zoned(20) inz;
+dcl-s msgData char(80) inz;
+dcl-ds qMsgF likeds(qObj_t) inz;
+dcl-ds errCode likeds(errCode_t) inz;
 
-       // ======================================================================
-       //  Program entry point
-       // ======================================================================
+// --------------------------------------------------------------------
+//  *ENTYR Felder
+// --------------------------------------------------------------------
+dcl-pr DSPLIBSIZR extpgm('DSPLIBSIZR');
+  i_lib      char(10) const;
+  i_language char(3) const;
+end-pr;
 
-     D DSPLIBSIZR...
-     D                 PI
-     D  i_lib                        10A   const
-     D  i_language                    3A   const
-     D
-     D i               S             10i 0
-       //-------------------------------------------------------------------
-      /free
+// ======================================================================
+//  Program entry point
+// ======================================================================
+dcl-pi DSPLIBSIZR;
+  i_lib      char(10) const;
+  i_language char(3) const;
+end-pi;
 
-       Exsr getLibAttr;
+dcl-s i int(10);
+//-------------------------------------------------------------------
 
-       pVarLenRcd = %addr(rcvVar) + 16;
+Exsr getLibAttr;
 
-       FOR i = 1 TO rcvVar.numRet;
+pVarLenRcd = %addr(rcvVar) + 16;
 
-          Select;
-             //  ... Bibliotheksgröße
-          When (varLenRcd.keyID = cSIZE);
-             Exsr getLibSize;
-             //  ... Bibliotheksbeschreibung (Text)
-          When (varLenRcd.keyID = cTEXT);
-             Exsr getLibText;
-          Other;
-             Exsr *PSSR;
-          Endsl;
+FOR i = 1 TO rcvVar.numRet;
 
-          pVarLenRcd = pVarLenRcd + varLenRcd.dtaLen;
-       ENDFOR;
+  Select;
+  //  ... BibliotheksgrÃ¶ÃŸe
+  When (varLenRcd.keyID = cSIZE);
+    Exsr getLibSize;
+  //  ... Bibliotheksbeschreibung (Text)
+  When (varLenRcd.keyID = cTEXT);
+    Exsr getLibText;
+  Other;
+    Exsr *PSSR;
+  Endsl;
 
-       *INLR = *ON;
+  pVarLenRcd = pVarLenRcd + varLenRcd.dtaLen;
+ENDFOR;
 
-       // ----------------------------------------------------------------------
-       //  Ermitteln der Bibliotheksattribute
-       // ----------------------------------------------------------------------
-       Begsr getLibAttr;
+*INLR = *ON;
 
-          Clear rcvVar;
-          Clear attrToRtv;
-          attrToRtv.numAttr = 2;
-          attrToRtv.attr1 = cSIZE;
-          attrToRtv.attr2 = cTEXT;
-          errCode = f_newApiErrCode(cFALSE);
-          QLIRLIBD(rcvVar: %size(rcvVar): i_lib: attrToRtv: errCode);
+// ----------------------------------------------------------------------
+//  Ermitteln der Bibliotheksattribute
+// ----------------------------------------------------------------------
+Begsr getLibAttr;
 
-       Endsr;
+  Clear rcvVar;
+  Clear attrToRtv;
+  attrToRtv.numAttr = 2;
+  attrToRtv.attr1 = cSIZE;
+  attrToRtv.attr2 = cTEXT;
+  errCode = f_newApiErrCode(cFALSE);
+  QLIRLIBD(rcvVar: %size(rcvVar): i_lib: attrToRtv: errCode);
 
-       // ----------------------------------------------------------------------
-       //  Anzeigen der Bibliotheksgröße
-       // ----------------------------------------------------------------------
-       Begsr getLibSize;
+Endsr;
 
-          //  Ermitteln der Größe (Objekte in Bibliothek)
-          pLibSize = pVarLenRcd + %size(varLenRcd);
+// ----------------------------------------------------------------------
+//  Anzeigen der BibliotheksgrÃ¶ÃŸe
+// ----------------------------------------------------------------------
+Begsr getLibSize;
 
-          //  Aufbereiten der Nachricht (Nicht alle Objekte berücksichtigt)
-          If (libSize.infStat = '0');
+  //  Ermitteln der GrÃ¶ÃŸe (Objekte in Bibliothek)
+  pLibSize = pVarLenRcd + %size(varLenRcd);
 
-             Select;
-             When (i_language = 'GER');
-                msgData = 'Nicht alle Objekte von +
-                          Bibliothek ' +
-                            %trim(i_lib) +
-                         ' berücksichtigt.';
-             When (i_language = 'ENG');
-                msgData = 'Not all objects of +
-                          library ' +
-                            %trim(i_lib) +
-                         ' included in total library size.';
-             Other;
-                msgData = 'Unknown language identifier!';
-             Endsl;
+  //  Aufbereiten der Nachricht (Nicht alle Objekte berÃ¼cksichtigt)
+  If (libSize.infStat = '0');
 
-             qMsgF.name = 'QCPFMSG';
-             qMsgF.lib = '*LIBL';
+    Select;
+    When (i_language = 'GER');
+      msgData = 'Nicht alle Objekte von +
+                Bibliothek ' +
+                  %trim(i_lib) +
+               ' berÃ¼cksichtigt.';
+    When (i_language = 'ENG');
+      msgData = 'Not all objects of +
+                library ' +
+                  %trim(i_lib) +
+               ' included in total library size.';
+    Other;
+      msgData = 'Unknown language identifier!';
+    Endsl;
 
-             QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
-                      : '*INFO': '*CTLBDY': 1: msgKey: errCode);
+    qMsgF.name = 'QCPFMSG';
+    qMsgF.lib = '*LIBL';
 
-          Endif;
+    QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
+             : '*INFO': '*CTLBDY': 1: msgKey: errCode);
 
-          //  Aufbereiten der Nachricht (Größe)
-          totLibSize = libSize.size * libSize.mult;
+  Endif;
 
-          Select;
-          When (i_language = 'GER');
-             msgData = 'Bibliothek: ' +
-                         %trim(i_lib) +
-                      ' - Größe: ' +
-                         %trim(%editc(totLibSize: 'K')) +
-                      ' Byte.';
-          When (i_language = 'ENG');
-             msgData = 'Library: ' +
-                         %trim(i_lib) +
-                      ' - Size: ' +
-                         %trim(%editc(totLibSize: 'K')) +
-                      ' byte.';
-          Other;
-             msgData = 'Unknown language identifier!';
-          Endsl;
+  //  Aufbereiten der Nachricht (GrÃ¶ÃŸe)
+  totLibSize = libSize.size * libSize.mult;
 
-          qMsgF.name = 'QCPFMSG';
-          qMsgF.lib = '*LIBL';
+  Select;
+  When (i_language = 'GER');
+    msgData = 'Bibliothek: ' +
+                %trim(i_lib) +
+             ' - GrÃ¶ÃŸe: ' +
+                %trim(%editc(totLibSize: 'K')) +
+             ' Byte.';
+  When (i_language = 'ENG');
+    msgData = 'Library: ' +
+                %trim(i_lib) +
+             ' - Size: ' +
+                %trim(%editc(totLibSize: 'K')) +
+             ' byte.';
+  Other;
+    msgData = 'Unknown language identifier!';
+  Endsl;
 
-          QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
-                   : '*INFO': '*CTLBDY': 1: msgKey: errCode);
+  qMsgF.name = 'QCPFMSG';
+  qMsgF.lib = '*LIBL';
 
-       Endsr;
+  QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
+           : '*INFO': '*CTLBDY': 1: msgKey: errCode);
 
-       // ----------------------------------------------------------------------
-       //  Anzeigen der Bibliotheksbeschreibung (Text)
-       // ----------------------------------------------------------------------
-       Begsr getLibText;
+Endsr;
 
-          //  Aufbereiten der Nachricht (Beschreibung)
-          pLibDesc = pVarLenRcd + %size(varLenRcd);
-          msgData = libDesc.text;
+// ----------------------------------------------------------------------
+//  Anzeigen der Bibliotheksbeschreibung (Text)
+// ----------------------------------------------------------------------
+Begsr getLibText;
 
-          qMsgF.name = 'QCPFMSG';
-          qMsgF.lib = '*LIBL';
+  //  Aufbereiten der Nachricht (Beschreibung)
+  pLibDesc = pVarLenRcd + %size(varLenRcd);
+  msgData = libDesc.text;
 
-          QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
-                   : '*INFO': '*CTLBDY': 1: msgKey: errCode);
+  qMsgF.name = 'QCPFMSG';
+  qMsgF.lib = '*LIBL';
 
-       Endsr;
+  QMHSNDPM('CPF9897': qMsgF: msgData: %size(msgData)
+           : '*INFO': '*CTLBDY': 1: msgKey: errCode);
 
-       // ----------------------------------------------------------------------
-       //  Fehlerbehandlung
-       // ----------------------------------------------------------------------
-       Begsr *PSSR;
-       Endsr '*CANCL';
+Endsr;
 
-      /end-free
+// ----------------------------------------------------------------------
+//  Fehlerbehandlung
+// ----------------------------------------------------------------------
+Begsr *PSSR;
+Endsr '*CANCL';
 
-       //==================================================================*
-       //  Create new API error code
-       //==================================================================*
-     P f_newApiErrCode...
-     P                 B
-     D                 PI                         likeds(errCode_t)
-     D  i_monMsg                           value  like(bool_t)
 
-     D errCode         DS                  likeds(errCode_t) inz
-       //-------------------------------------------------------------------
-      /free
+//==================================================================*
+//  Create new API error code
+//==================================================================*
+dcl-proc f_newApiErrCode;
+  dcl-pi *n likeds(errCode_t);
+    i_monMsg like(bool_t) value;
+  end-pi;
 
-       Clear errCode;
+  dcl-ds errCode likeds(errCode_t) inz;
+  //-------------------------------------------------------------------
 
-       If (i_monMsg);
-          errCode.bytPrv = %size(errCode);
-       Else;
-          errCode.bytPrv = 0;
-       Endif;
+  Clear errCode;
 
-       Return errCode;
+  If (i_monMsg);
+    errCode.bytPrv = %size(errCode);
+  Else;
+    errCode.bytPrv = 0;
+  Endif;
 
-      /end-free
-     P                 E
+  Return errCode;
 
-       //==================================================================*
-       //  Is API Error?
-       //==================================================================*
-     P f_isApiErr...
-     P                 B
-     D                 PI                         like(bool_t)
-     D  i_errCode                          value  likeds(errCode_t)
+end-proc;
 
-     D o_isError       S                   like(bool_t) inz(cFALSE)
-       //-------------------------------------------------------------------
-      /free
+//==================================================================*
+//  Is API Error?
+//==================================================================*
+dcl-proc f_isApiErr;
+  dcl-pi *n like(bool_t);
+    i_errCode likeds(errCode_t) value;
+  end-pi;
 
-       If (i_errCode.bytAvl = 0);
-          o_isError = cFALSE;
-       Else;
-          o_isError = cTRUE;
-       Endif;
+  dcl-s o_isError like(bool_t) inz(cFALSE);
+  //-------------------------------------------------------------------
 
-       Return o_isError;
+  If (i_errCode.bytAvl = 0);
+    o_isError = cFALSE;
+  Else;
+    o_isError = cTRUE;
+  Endif;
 
-      /end-free
-     P                 E
+  Return o_isError;
+
+end-proc;

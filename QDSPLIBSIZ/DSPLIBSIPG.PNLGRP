@@ -21,7 +21,7 @@
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name          Änderung                                 *
+.*  Datum       Name          Ã„nderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -45,30 +45,30 @@
 :IMHELP name='DSPLIBSIZ/LIB       '.
 :EHELP.
 .*--------------------------------------------------------------------
-.* Hilfetext für den Befehl
+.* Hilfetext fÃ¼r den Befehl
 .*--------------------------------------------------------------------
 :HELP NAME='DSPLIBSIZ'.
-Anzeigen Bibliotheksgröße (DSPLIBSIZ) - Hilfe
+Anzeigen BibliotheksgrÃ¶ÃŸe (DSPLIBSIZ) - Hilfe
 :P.
-Der Befehl DSPLIBSIZ ermittelt die Gesamtgröße einer Bibliothek
+Der Befehl DSPLIBSIZ ermittelt die GesamtgrÃ¶ÃŸe einer Bibliothek
 inclusive aller enthaltenen Objekte.
 .*
 :EHELP.
 .*
 .*--------------------------------------------------------------------
-.* Hilfetext für Schlüsselwort LIB
+.* Hilfetext fÃ¼r SchlÃ¼sselwort LIB
 .*--------------------------------------------------------------------
 :HELP name='DSPLIBSIZ/LIB       '.
 Bibliothek - Hilfe
 :XH3.Bibliothek (LIB)
 :P.
-Name der Bibliothek, deren Gesamtgröße ermittelt werden soll.
+Name der Bibliothek, deren GesamtgrÃ¶ÃŸe ermittelt werden soll.
 .*
 :IMHELP name='COM/REQPARM'.
 .*
 :PARML.
 :PT.:PV.Bibliotheksname:EPV.
-:PD.Name der Bibliothek deren Größe ermittelt werden soll.
+:PD.Name der Bibliothek deren GrÃ¶ÃŸe ermittelt werden soll.
 :EPARML.
 .*
 :EHELP.
@@ -103,7 +103,7 @@ Dieser Parameter ist optional.
 .*=====================================
 :HELP NAME='COM/VALUES'.
 :P.
-Mögliche Werte sind:
+MÃ¶gliche Werte sind:
 :EHELP.
 .*
 :EPNLGRP.

@@ -21,7 +21,7 @@
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name          Änderung                                 *
+.*  Datum       Name          Ã„nderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -45,7 +45,7 @@
 :IMHELP name='DSPLIBSIZ/LIB       '.
 :EHELP.
 .*--------------------------------------------------------------------
-.* Hilfetext für den Befehl
+.* Hilfetext fÃ¼r den Befehl
 .*--------------------------------------------------------------------
 :HELP NAME='DSPLIBSIZ'.
 Display Library Size (DSPLIBSIZ) - Help
@@ -56,7 +56,7 @@ size contains the size of all objects included in the library.
 :EHELP.
 .*
 .*--------------------------------------------------------------------
-.* Hilfetext für Schlüsselwort LIB
+.* Hilfetext fÃ¼r SchlÃ¼sselwort LIB
 .*--------------------------------------------------------------------
 :HELP name='DSPLIBSIZ/LIB       '.
 Library - Help
